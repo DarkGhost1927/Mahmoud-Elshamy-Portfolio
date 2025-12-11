@@ -1197,64 +1197,50 @@ html {
 /* ========================================= */
 /* Responsive Mobile Design (للموبايل)  */
 /* ========================================= */
+/* ========================================= */
+/* تصميم الموبايل (Fix Mobile Layout) */
+/* ========================================= */
 @media screen and (max-width: 768px) {
+    
+    /* 1. تظبيط الجسم عشان مفيش سكرول بالعرض يظهر */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        position: relative;
+    }
 
-    /* 1. تظبيط الهوامش العامة عشان مفيش حاجة تخرج بره */
+    /* 2. تحويل أي حاجة "جنب بعض" لـ "تحت بعض" */
+    .hero-content, 
+    .nav-links, 
+    nav,
+    .about-content,
+    .projects-grid,
+    .contact-container {
+        flex-direction: column !important;
+        width: 100% !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    /* 3. معالجة الصور الكبيرة */
+    img {
+        max-width: 90% !important; /* مفيش صورة تزيد عن عرض الشاشة */
+        height: auto !important;
+    }
+
+    /* 4. تظبيط الهوامش */
+    section {
+        padding: 40px 15px !important; /* هوامش جانبية عشان الكلام ميلزقش */
+    }
+
+    /* 5. تصغير الخطوط الكبيرة */
+    h1 { font-size: 2rem !important; }
+    h2 { font-size: 1.8rem !important; }
+    p { font-size: 1rem !important; }
+
+    /* 6. إخفاء الزوائد */
     .container {
-        width: 100%;
-        padding: 0 15px; /* هوامش جانبية صغيرة */
-        overflow-x: hidden; /* منع السكرول بالعرض */
-    }
-
-    /* 2. الهيرو سكشن (الواجهة الرئيسية) */
-    .hero-content {
-        flex-direction: column-reverse; /* نخلي الصورة فوق والكلام تحت أو العكس */
-        text-align: center;
-        padding-top: 100px;
-    }
-
-    .hero-text h1 {
-        font-size: 2.5rem; /* تصغير العنوان الكبير */
-    }
-
-    .hero-text p {
-        font-size: 1rem;
-    }
-
-    /* 3. الصورة الشخصية */
-    .hero-img img {
-        width: 250px; /* تصغير الصورة */
-        height: 250px;
-        margin-bottom: 30px; /* مسافة بينها وبين الكلام */
-    }
-
-    /* 4. النافبار (القائمة العلوية) */
-    /* غالباً القائمة هتكون زحمة، الحل السريع نخليها عمودية أو نصغرها */
-    nav {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px;
-    }
-    
-    .nav-links {
-        flex-direction: column; /* الروابط تحت بعض */
-        gap: 10px;
-        text-align: center;
-    }
-
-    /* 5. المشاريع والمهارات (الكروت) */
-    .projects-grid, .skills-grid {
-        grid-template-columns: 1fr; /* نخلي الكروت عمود واحد بس */
-    }
-
-    /* 6. الفوتر */
-    .mini-footer {
-        font-size: 0.8rem; /* تصغير الخط شوية */
-        padding: 15px;
-    }
-    
-    /* 7. أيقونة العلم */
-    .flag-icon {
-        height: 15px; /* تصغير العلم سنة للموبايل */
+        width: 100% !important;
+        padding: 0 10px !important;
     }
 }
