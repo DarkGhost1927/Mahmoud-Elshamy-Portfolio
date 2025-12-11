@@ -1193,3 +1193,68 @@ html {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.1); }
 }
+
+/* ========================================= */
+/* Responsive Mobile Design (للموبايل)  */
+/* ========================================= */
+@media screen and (max-width: 768px) {
+
+    /* 1. تظبيط الهوامش العامة عشان مفيش حاجة تخرج بره */
+    .container {
+        width: 100%;
+        padding: 0 15px; /* هوامش جانبية صغيرة */
+        overflow-x: hidden; /* منع السكرول بالعرض */
+    }
+
+    /* 2. الهيرو سكشن (الواجهة الرئيسية) */
+    .hero-content {
+        flex-direction: column-reverse; /* نخلي الصورة فوق والكلام تحت أو العكس */
+        text-align: center;
+        padding-top: 100px;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem; /* تصغير العنوان الكبير */
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    /* 3. الصورة الشخصية */
+    .hero-img img {
+        width: 250px; /* تصغير الصورة */
+        height: 250px;
+        margin-bottom: 30px; /* مسافة بينها وبين الكلام */
+    }
+
+    /* 4. النافبار (القائمة العلوية) */
+    /* غالباً القائمة هتكون زحمة، الحل السريع نخليها عمودية أو نصغرها */
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .nav-links {
+        flex-direction: column; /* الروابط تحت بعض */
+        gap: 10px;
+        text-align: center;
+    }
+
+    /* 5. المشاريع والمهارات (الكروت) */
+    .projects-grid, .skills-grid {
+        grid-template-columns: 1fr; /* نخلي الكروت عمود واحد بس */
+    }
+
+    /* 6. الفوتر */
+    .mini-footer {
+        font-size: 0.8rem; /* تصغير الخط شوية */
+        padding: 15px;
+    }
+    
+    /* 7. أيقونة العلم */
+    .flag-icon {
+        height: 15px; /* تصغير العلم سنة للموبايل */
+    }
+}
