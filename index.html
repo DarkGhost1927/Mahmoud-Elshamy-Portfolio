@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahmoud ElShamy | CyberSecurity Engineer</title>
+    <link rel="icon" href="https://img.icons8.com/nolan/64/wolf.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+</head>
+<body>
+
+    <!--left side bar-->
+        <div class="social-spine">
+            <a href="https://www.facebook.com/mahmoud.elshamy.5667901/" target="_blank" class="spine-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/mahmoud-elshamy-9976a7336" target="_blank" class="spine-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/mshamy44/?__pwa=1" target="_blank" class="spine-link"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/m4ah3mo2u6d" target="_blank" class="spine-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="spine-link">
+            <img src="https://flagcdn.com/ps.svg" alt="Palestine" style="width: 24px; vertical-align: middle; border-radius: 3px;">
+        </a>
+        </div>
+    
+    <!----------------------------- div has all website------------------>
+    <div class="container">
+
+        <!--------------------right side --------------------------------->
+        <div class="hero" id="home">
+            <!--------------Title div---------------------->
+        <div class="text-info">
+            <div class="identity-row">
+                <h1 class="my-name">Mahmoud Mohamed ELshamy</h1>
+                <div class="vertical-line"></div>
+                <h2 class="nickname">DARK GHOST</h2>
+            </div>
+            
+            <div class="job-mix">
+                <span class="highlight">CyberSecurity Engineer</span> 
+                <span class="symbol">&</span>
+                <span class="highlight">SOC Analyst (T1)</span>
+                <span class="divider">|</span> 
+                <span class="highlight">Bug Bounty Hunter</span>
+            </div>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Download CV <i class="fas fa-download"></i></a>
+                <a href="mailto:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#046;&#109;&#115;&#104;&#097;&#109;&#121;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;?subject=Contact form Profile" class="btn-secondary">Contact Me</a>
+            </div>
+        </div>
+            <!-----------------IMAge div------------------>
+            <div class="image">
+                <img src="imgs/ghost0.jpg" alt=".....">
+            </div>
+        </div>
+
+        <!--------------------------------------------------------------left side --------------------->
+        <!--------------------------------------Create a Curtain Menu---------------------------------->
+        <div class="menu-icon" onclick="openNav()">
+            <span>&#9776;</span>
+        </div>
+        
+        <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <div class="overlay-content">
+        <a href="#home" onclick="closeNav()">HOME</a>
+        
+        <a href="#aboutme" onclick="closeNav()">ABOUT ME</a>
+        
+        <a href="#hunting" onclick="closeNav()">BUG HUNTING</a>
+        
+        <a href="#projects" onclick="closeNav()">PROJECTS</a>
+        
+        <a href="#skills" onclick="closeNav()">Skills</a>
+        </div>
+        </div>
+
+        <!--------------------------------------About me--------------------------------------->
+
+            <div class="aboutme-container" id="aboutme">
+            <h1 class="section-title">ABOUT ME</h1>
+            
+            <div class="aboutme-card">
+                <div class="academic-info">
+                    <i class="fas fa-university"></i>
+                    <p>
+                        Student at <span class="highlight">Faculty of Computer Science</span> 
+                        <br> 
+                        <span class="uni-name">Mansoura University</span>
+                    </p>
+                </div>
+
+                <div class="divider-line"></div>
+
+                <p class="bio-text">
+                    Beyond the classroom, I am a <span class="highlight">self-taught practitioner</span>. 
+                    I spend my time automating security tasks, analyzing SOC alerts, and hunting for vulnerabilities on real-world targets. 
+                    <br><br>
+                    <em>"I believe the best way to secure a system is to understand exactly how it breaks."</em>
+                </p>
+            </div>
+        </div>
+
+        <!------------------------Bug Hunting------------------------------->
+            <div id="hunting" class="hunting-section">
+                <h1 class="section-title">vulnerabilities I Found</h1>
+                
+                <div class="bounty-grid">
+                    
+                    <div class="bounty-card critical">
+                        <div class="card-border"></div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <i class="fa-solid fa-bug"></i>          
+                                <span class="severity-badge">CRITICAL</span>
+                            </div>
+                            <h3>Remote Code Execution (RCE)</h3>
+                            <p>Found a critical RCE vulnerability in Google Cloud Platform via parameter injection.</p>
+                            <div class="card-footer">
+                                <span class="date">2023</span>
+                                <a href="#" class="view-btn">VIEW REPORT</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="bounty-card high">
+                        <div class="card-border"></div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <i class="fa-solid fa-bug"></i> <span class="severity-badge">HIGH</span>
+                            </div>
+                            <h3>IDOR on Instagram</h3>
+                            <p>Accessing private user photos through manipulated API endpoints.</p>
+                            <div class="card-footer">
+                                <span class="date">2022</span>
+                                <a href="#" class="view-btn">VIEW REPORT</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bounty-card medium">
+                        <div class="card-border"></div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <i class="fa-solid fa-bug"></i>
+                                <span class="severity-badge">MEDIUM</span>
+                            </div>
+                            <h3>Subdomain Takeover</h3>
+                            <p>Successfully claimed an abandoned Azure subdomain pointing to Microsoft services.</p>
+                            <div class="card-footer">
+                                <span class="date">2023</span>
+                                <a href="#" class="view-btn">VIEW REPORT</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+                <!-----------------------------Projects------------------------------------------->
+                        <div id="projects" class="projects-section">
+                <h1 class="section-title">PROJECTS & TOOLS</h1>
+                
+                <div class="projects-grid">
+                    
+                    <div class="project-card">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="terminal-path">~/scripts/log-analyzer.py</div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="command-line">
+                                <span class="prompt">$</span> python3 log_analyzer.py --scan
+                            </div>
+                            
+                            <h3>SOC Log Automator</h3>
+                            <p>A Python tool designed to automate the parsing of SIEM logs, reducing manual analysis time by 40%.</p>
+                            
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Regex</span>
+                                <span>JSON</span>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="terminal-path">~/tools/subdomain-hunter.sh</div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="command-line">
+                                <span class="prompt">$</span> ./subdomain_hunter.sh -d target.com
+                            </div>
+                            
+                            <h3>Subdomain Enumerator</h3>
+                            <p>Bash script that combines multiple open-source tools to find hidden subdomains for Bug Bounty.</p>
+                            
+                            <div class="tech-stack">
+                                <span>Bash</span>
+                                <span>Linux</span>
+                                <span>Automation</span>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+            </div>
+
+            <!------------------------------Skills------------------------->
+                <div id="skills" class="tech-stack-section">
+                    <h1 class="section-title"> TECHNICAL SKILLS </h1>
+                    <p class="section-subtitle">Tools & Technologies I use to defend, attack, and build.</p>
+        <div class="tech-container">
+
+        <div class="tech-category">
+        <h3><i class="fas fa-shield-alt"></i> DEFENSIVE OPS (SOC)</h3>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <img src="https://cdn.simpleicons.org/splunk" alt="Splunk" class="tech-icon">
+                <span>Splunk</span>
+            </div>
+            <div class="tech-item">
+                <img src="https://cdn.simpleicons.org/wireshark" alt="Wireshark" class="tech-icon">
+                <span>Wireshark</span>
+            </div>
+            <div class="tech-item">
+                <img src="https://cdn.simpleicons.org/elastic" alt="Elastic" class="tech-icon">
+                <span>Elastic</span>
+            </div>
+        </div>
+        </div>
+
+    <div class="tech-category">
+        <h3><i class="fas fa-bug"></i> OFFENSIVE OPS (HUNTING)</h3>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <img src="https://cdn.simpleicons.org/burpsuite" alt="Burp Suite" class="tech-icon">
+                <span>Burp Suite</span>
+            </div>
+            <div class="tech-item">
+                <img src="https://cdn.simpleicons.org/kalilinux" alt="Kali Linux" class="tech-icon">
+                <span>Kali Linux</span>
+            </div>
+            <div class="tech-item">
+                <img src="https://cdn.simpleicons.org/owasp" alt="OWASP" class="tech-icon">
+                <span>OWASP Top 10</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tech-category">
+        <h3><i class="fas fa-code"></i> ENGINEERING</h3>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <img src="https://cdn.simpleicons.org/python" alt="Python" class="tech-icon">
+                <span>Python</span>
+            </div>
+            <div class="tech-item">
+                <img src="https://cdn.simpleicons.org/gnubash" alt="Bash" class="tech-icon">
+                <span>Bash</span>
+            </div>
+            <div class="tech-item">
+                <img src="https://cdn.simpleicons.org/docker" alt="Docker" class="tech-icon">
+                <span>Docker</span>
+            </div>
+            <div class="tech-item">
+                <img src="https://cdn.simpleicons.org/git" alt="Git" class="tech-icon">
+                <span>Git</span>
+            </div>
+        </div>
+    </div>
+
+        </div>
+                    
+                </div>
+            <!-----------------------Final section------------------------->
+        <div id="contact" class="contact-section">
+            
+            <div class="contact-content">
+                <h1 class="section-title">LET'S CONNECT</h1>
+                <p>
+                    Interested in securing your assets or need a detailed security audit?
+                    <br>I am always open to discussing new opportunities and challenges.
+                </p>
+
+                <a href="mailto:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#046;&#109;&#115;&#104;&#097;&#109;&#121;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;" class="email-btn">
+                    <i class="fas fa-envelope"></i> Say Hello
+                </a>
+
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/mahmoud-elshamy-9976a7336" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/DarkGhost1927" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/m4ah3mo2u6d" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Mahmoud ElShamy (Dark Ghost). All Rights Reserved.
+                        <span class="support-badge">
+                         Free Palestine <img src="https://flagcdn.com/w40/ps.png" alt="Palestine Flag" class="flag-icon">
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

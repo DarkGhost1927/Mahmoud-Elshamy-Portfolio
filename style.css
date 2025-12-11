@@ -1,0 +1,1195 @@
+
+/* 1. إعدادات الصفحة والألوان (Modern Cyberpunk Palette) */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    /* خلفية متدرجة عميقة (أزرق ليلي مع بنفسجي) */
+    background: radial-gradient(circle at top right, #1e1b4b, #0f172a, #000000);
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    /* ضمان الاتجاه من اليسار لليمين */
+    direction: ltr; 
+    scroll-behavior: smooth; /* ده السطر السحري */
+}
+
+/* 2. الحاوية الرئيسية (توزيع العناصر) */
+.container {
+    display: flex;
+    flex-direction: column; /* ده اللي هينزل الـ About Me تحت الهيرو */
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+/* 3. القائمة الجانبية (Left Side) */
+.menu-icon {
+    position: fixed;       /* تثبيت في الشاشة */
+    top: 30px;             /* مسافة من فوق */
+    left: 80px;            /* مسافة من الشمال (بعيد عن السوشيال شوية) */
+    z-index: 1000;         /* يفضل فوق كل العناصر */
+    
+    /* باقي التنسيق الشكلي القديم بتاعك زي ما هو */
+    font-size: 35px;
+    color: #22d3ee;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+.menu-icon:hover {
+    transform: rotate(90deg);
+    color: #a855f7; /* يتحول للبنفسجي عند اللمس */
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+}
+
+/* 4. قسم الهيرو (Right Side) */
+/* --- 1. إصلاح مكان الكونتينر (عشان ميروحش يمين) --- */
+.hero {
+    /* الأمر ده بيخلي الهيرو يحذف نفسه ناحية اليمين جوه العمود */
+    align-self: flex-end; 
+    
+    /* باقي تنسيقاتك القديمة عشان تفضل الصورة والكلام زي ما هما */
+    display: flex;
+    flex-direction: row; /* كلام وصورة جنب بعض */
+    align-items: center;
+    justify-content: flex-end;
+    width: auto; /* ياخد حجمه الطبيعي */
+    margin-right: 50px; /* مسافة من الحافة اليمين */
+    margin-bottom: 50px; /* مسافة تحته */
+    gap: 40px;
+}
+/* تعديل للموبايل فقط عشان ميبوظش */
+@media (max-width: 768px) {
+    .hero {
+        justify-content: center; /* في الموبايل هاتهم في النص */
+        padding-right: 0;
+        flex-direction: column-reverse; /* الصورة فوق والكلام تحت */
+    }
+}
+/* --- تعديل كود .hero --- */
+/* خدعة: إضافة خلفية مضيئة ورا الهيرو من غير ما نعدل HTML */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    /* كرة ضوء بنفسجية ضبابية */
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+    z-index: -1; /* ورا المحتوى */
+    filter: blur(40px);
+    animation: float-glow 6s infinite alternate;
+}
+
+/* 5. تنسيق الصورة */
+/* بنستخدم order عشان نعكس ترتيبها مع التايتل لو حابب الصورة فوق */
+/* تعديل بسيط لحاوية الصورة */
+.hero .image {
+    flex: 1; /* تاخد مساحتها */
+    margin-bottom: 0; /* شيلنا المارجن القديم */
+    display: flex;
+    justify-content: center; /* توسيط الصورة في مكانها */
+}
+
+/* جعل الصورة دائرية */
+.hero .image img {
+    /* لازم العرض والطول يكونوا قد بعض بالظبط عشان تبقى دايرة */
+    width: 320px; 
+    height: 320px;
+    
+    /* الأمر السحري للدائرة */
+    border-radius: 50%;
+    
+    /* عشان الصورة متتمطش جوه الدايرة */
+    object-fit: cover;
+    
+    /* نفس تأثيرات الظل واللمعان القديمة بتاعتك */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    filter: brightness(1.05) contrast(1.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    z-index: 2;
+    border: 3px solid rgba(34, 211, 238, 0.3); /* برواز خفيف نيون (اختياري) */
+}
+
+/* عشان لما تقف عليها تفضل دايرة */
+.hero .image img:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(168, 85, 247, 0.4);
+}
+/* 6. تنسيق التايتل */
+.hero .title {
+    order: 2; /* التايتل يجي تحت الصورة */
+    text-align: center;
+}
+
+.hero .title h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    
+    /* جعل النص متدرج اللون (Gradient Text) */
+    background: linear-gradient(90deg, #22d3ee, #e879f9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* ظل خفيف للكلام */
+    filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.3));
+    
+    /* مكان للمؤشر */
+    position: relative;
+    display: inline-block;
+}
+
+
+/* أنيميشن بسيط للخلفية المضيئة */
+@keyframes float-glow {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+}
+
+/* --- تعديلات الموبايل --- */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* العناصر تحت بعض */
+        padding: 20px;
+    }
+    
+    .menu-icon {
+        order: 1; /* القائمة فوق */
+        align-self: flex-start; /* تروح شمال */
+    }
+    
+    .hero {
+        order: 2; /* المحتوى تحت */
+        width: 100%;
+        margin-right: 0;
+        margin-top: 30px;
+    }
+    
+    .hero .image img {
+        width: 100%; /* الصورة تملأ الشاشة */
+    }
+    
+    .hero .title h1 {
+        font-size: 2rem; /* تصغير الخط */
+    }
+}
+.social-spine {
+    position: fixed;
+    left: 25px; /* مسافة من اليسار */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* المسافة بين كل أيقونة والتانية */
+    z-index: 1000;
+}
+
+.spine-link {
+    color: #aaa; /* اللون الطبيعي */
+    font-size: 24px; /* كبرت حجم الايقونة سنة بسيطة عشان تكون أوضح */
+    transition: all 0.3s ease;
+}
+
+.spine-link:hover {
+    color: #00f2ff; /* لون لبني زي كلمة DARK */
+    transform: scale(1.3) translateX(5px); /* تكبر وتتحرك لليمين سنة كأنها بتستقبلك */
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.8); /* ده بيعمل تأثير النيون المتوهج */
+}
+
+/* تنسيق الحاوية بتاعة الكلام */
+/* --- تنسيق النصوص --- */
+.text-info {
+    text-align: left;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* --- السطر الأول المدمج (الاسم + اللقب) --- */
+.text-info .identity-row {
+    display: flex;
+    align-items: center; /* عشان الكلام يبقى على نفس الخط */
+    gap: 15px; /* مسافة بين الاسم واللقب */
+    margin-bottom: 15px; /* مسافة تحتهم قبل الوظيفة */
+    flex-wrap: wrap; /* لو الشاشة صغرت ينزلوا تحت بعض */
+}
+
+/* الاسم الحقيقي */
+.text-info h1.my-name {
+    font-size: 1.6rem; /* صغرناه سنة بسيطة عشان يمشي مع اللقب */
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* الخط الفاصل بين الاسم واللقب */
+.text-info .vertical-line {
+    width: 2px;
+    height: 30px;
+    background-color: #80DEEA; /* اللون الهادي اللي اخترته */
+    opacity: 0.6;
+}
+
+/* اللقب DARK GHOST (التدرج اللوني) */
+.text-info h2.nickname {
+    font-size: 2.2rem; /* أكبر وأوضح حاجة في السطر */
+    font-weight: 900;
+    margin: 0;
+    text-transform: uppercase;
+    
+    /* التدرج من أزرق سماوي لبنفسجي */
+    background: linear-gradient(90deg, #4FC3F7 0%, #9575CD 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    filter: drop-shadow(0 0 10px rgba(79, 195, 247, 0.3));
+}
+
+/* --- السطر الثاني (الوظيفة) --- */
+/* تنسيق السطر بالكامل */
+.text-info .job-mix {
+    font-size: 1.1rem;
+    color: #ffffff; /* ده اللون الأساسي للرموز زي & */
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+/* الكلمات المميزة (الثلاثة وظائف) هياخدوا اللون السماوي #00E5FF */
+.text-info .highlight {
+    color: #00E5FF; 
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+}
+
+/* تنسيق الرمز & والفواصل عشان يبقوا بلون هادي */
+.text-info .symbol, 
+.text-info .divider {
+    color: #80DEEA; /* لون أهدى من العناوين */
+    font-weight: 400; /* خط أرفع عشان ميزحمش الكلام */
+}
+
+.text-info .divider {
+    font-size: 1.3rem; /* تكبير الفاصل العمودي شوية */
+    margin-bottom: 3px;
+}
+
+/* --- تعديل للموبايل عشان الاسم طويل --- */
+@media (max-width: 768px) {
+    .text-info .identity-row {
+        flex-direction: column; /* يرجعوا تحت بعض في الموبايل بس */
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .text-info .vertical-line {
+        display: none; /* نخفي الخط في الموبايل */
+    }
+}
+
+/* حاوية الأزرار */
+.text-info .cta-buttons {
+    margin-top: 25px; /* مسافة تحت الوظيفة */
+    display: flex;
+    gap: 15px; /* مسافة بين الزرارين */
+}
+
+/* الزرار الرئيسي (النيون) */
+.btn-primary {
+    text-decoration: none;
+    padding: 10px 25px;
+    background: transparent;
+    border: 2px solid #00E5FF; /* حدود سماوي */
+    color: #00E5FF;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+.btn-primary:hover {
+    background: #00E5FF; /* يملأ لون عند اللمس */
+    color: #000; /* الكتابة تقلب أسود */
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+    transform: translateY(-3px);
+}
+
+/* الزرار الثانوي (الهادي) */
+.btn-secondary {
+    text-decoration: none;
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.05); /* خلفية شفافة جداً */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* تصميم القائمة الجانبية (Sidebar) */
+/* تصميم القائمة الجانبية (بدون خطوط حادة) */
+.overlay {
+    height: 100%;
+    width: 0; 
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    background: rgba(15, 23, 42, 0.95); 
+    
+    /* التأثير الزجاجي */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* الحركة */
+    overflow-x: hidden;
+    transition: 0.4s ease;
+    
+    /* التعديل هنا: شلنا الخط السماوي (border-right) */
+    /* وسيبنا الضل بس عشان العمق */
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5); 
+}
+
+/* ترتيب الروابط */
+.overlay-content {
+    position: relative;
+    top: 100px; /* تنزل تحت شوية */
+    width: 100%;
+    text-align: left; /* المحاذاة لليسار أشيك في القوائم الجانبية */
+    padding-left: 40px; /* مسافة من الحافة */
+}
+
+/* تصميم الروابط */
+.overlay a {
+    text-decoration: none;
+    font-size: 1.5rem; /* حجم خط متوسط ومحترم */
+    color: #94a3b8; /* رمادي مزرق هادي */
+    display: block;
+    transition: 0.3s;
+    margin-bottom: 25px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    
+    /* إضافة خط صغير جنب الرابط بيظهر لما تقف عليه */
+    border-left: 3px solid transparent;
+    padding-left: 0;
+}
+
+/* لما الماوس ييجي عليها */
+.overlay a:hover {
+    color: #fff; /* يقلب أبيض */
+    padding-left: 15px; /* يتحرك لليمين */
+    border-left: 3px solid #00E5FF; /* يظهر خط نيون جنبه */
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+/* زرار الإغلاق (X) */
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 40px;
+    color: #fff;
+    margin-left: 50px;
+    transition: 0.3s;
+}
+
+.overlay .closebtn:hover {
+    color: #00E5FF;
+    transform: rotate(90deg);
+}
+
+/* تأثير التظليل على الموقع الأصلي لما القائمة تفتح (اختياري بس بيفرق جداً) */
+#main-content {
+    transition: margin-left .4s;
+    /* لو حابب الموقع يتزق لليمين لما القائمة تفتح */
+}
+
+/* حاوية القسم */
+.aboutme-container {
+    padding: 50px 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto; /* توسيط في نص الشاشة */
+}
+
+/* عنوان القسم */
+.section-title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    /* خط تحت الكلمة لونه نيون */
+    border-bottom: 3px solid #00E5FF;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* الكارت الزجاجي */
+.aboutme-card {
+    background: rgba(255, 255, 255, 0.03); /* شفاف جداً */
+    border: 1px solid rgba(0, 229, 255, 0.2); /* برواز نيون خفيف */
+    border-radius: 20px;
+    padding: 40px;
+    text-align: left; /* الكلام يبدأ من الشمال */
+    backdrop-filter: blur(10px); /* تغبيش الخلفية */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.aboutme-card:hover {
+    transform: translateY(-5px); /* حركة خفيفة عند اللمس */
+    border-color: #00E5FF;
+}
+
+/* الجزء الأكاديمي */
+.academic-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.academic-info i {
+    font-size: 2.5rem;
+    color: #00E5FF; /* أيقونة الجامعة نيون */
+}
+
+.academic-info p {
+    font-size: 1.2rem;
+    color: #e2e8f0;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.uni-name {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+/* الخط الفاصل */
+.divider-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00E5FF, transparent);
+    margin: 20px 0;
+    opacity: 0.5;
+}
+
+/* نص الـ Bio */
+.bio-text {
+    font-size: 1.1rem;
+    color: #b0b0b0;
+    line-height: 1.8; /* مسافة مريحة للقراءة */
+}
+
+/* الكلمات المميزة */
+.highlight {
+    color: #00E5FF;
+    font-weight: 600;
+}
+
+/* الاقتباس في الآخر */
+.bio-text em {
+    display: block;
+    margin-top: 15px;
+    color: #fff;
+    border-left: 3px solid #00E5FF;
+    padding-left: 15px;
+    font-style: italic;
+}
+
+/* للموبايل */
+@media (max-width: 768px) {
+    .aboutme-card {
+        padding: 20px;
+        text-align: center;
+    }
+    .academic-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    .bio-text em {
+        border-left: none;
+        border-top: 2px solid #00E5FF;
+        padding-top: 10px;
+        padding-left: 0;
+    }
+}
+
+/* 1. تنسيق القسم بالكامل */
+.hunting-section {
+    width: 100%;
+    max-width: 1200px; /* نفس عرض الهيرو */
+    margin: 100px auto; /* مسافة كبيرة من فوق */
+    text-align: center;
+    padding: 20px;
+}
+
+/* 2. شبكة الكروت (Grid System) */
+.bounty-grid {
+    display: grid;
+    /* كروت متجاوبة: 1 في الموبايل، 2 في التابلت، 3 في الكمبيوتر */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* 3. تصميم الكارت الأساسي */
+.bounty-card {
+    position: relative;
+    background: rgba(20, 20, 30, 0.6); /* خلفية غامقة جداً */
+    border-radius: 15px;
+    overflow: hidden; /* عشان التأثيرات متخرجش بره */
+    transition: transform 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bounty-card:hover {
+    transform: translateY(-10px); /* يطير لفوق شوية */
+}
+
+/* 4. المحتوى الداخلي للكارت */
+.card-content {
+    padding: 30px;
+    position: relative;
+    z-index: 2; /* عشان يبقى فوق تأثيرات الخلفية */
+    text-align: left;
+}
+
+/* 5. الهيدر (الأيقونة + بادج الخطورة) */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.company-icon {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.severity-badge {
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 5px 10px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+}
+
+/* 6. ألوان الخطورة (Specific Colors) */
+/* Critical = Red Neon */
+.bounty-card.critical .severity-badge {
+    background: rgba(255, 0, 85, 0.2);
+    color: #ff0055;
+    border: 1px solid #ff0055;
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.2);
+}
+
+/* High = Orange Neon */
+.bounty-card.high .severity-badge {
+    background: rgba(255, 136, 0, 0.2);
+    color: #ff8800;
+    border: 1px solid #ff8800;
+    box-shadow: 0 0 10px rgba(255, 136, 0, 0.2);
+}
+
+/* Medium = Blue Neon */
+.bounty-card.medium .severity-badge {
+    background: rgba(0, 229, 255, 0.2);
+    color: #00E5FF;
+    border: 1px solid #00E5FF;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+/* 7. النصوص */
+.bounty-card h3 {
+    margin: 0 0 10px 0;
+    color: #fff;
+    font-size: 1.4rem;
+}
+
+.bounty-card p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    height: 60px; /* ارتفاع ثابت عشان الكروت تبقى قد بعض */
+    overflow: hidden;
+}
+
+/* 8. الفوتر (التاريخ + الزرار) */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+
+.date {
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.view-btn {
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.view-btn:hover {
+    color: #00E5FF;
+    letter-spacing: 1px; /* حركة شيك عند اللمس */
+}
+
+/* 9. تأثير البوردر المضيء (Glow Effect) */
+/* ده بيعمل خط ملون على الشمال بيبان حسب الخطورة */
+.bounty-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    transition: 0.3s;
+}
+
+.bounty-card.critical::before { background: #ff0055; box-shadow: 2px 0 15px #ff0055; }
+.bounty-card.high::before { background: #ff8800; box-shadow: 2px 0 15px #ff8800; }
+.bounty-card.medium::before { background: #00E5FF; box-shadow: 2px 0 15px #00E5FF; }
+
+/* تأثير بسيط عند اللمس: الخلفية بتنور سنة */
+.bounty-card:hover {
+    background: rgba(30, 30, 45, 0.8);
+}
+
+/* 1. تنسيق القسم */
+.projects-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 100px auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.projects-grid {
+    display: grid;
+    /* نفس نظام الشبكة المتجاوب */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 40px;
+    margin-top: 50px;
+}
+
+/* 2. كارت التيرمينال */
+.project-card {
+    background: #0f172a; /* لون غامق */
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #00E5FF;
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+}
+
+/* 3. شريط العنوان (فوق) */
+.terminal-header {
+    background: #1e293b; /* أفتح سنة من الخلفية */
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 6px;
+    margin-right: 15px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.terminal-path {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    opacity: 0.7;
+}
+
+/* 4. المحتوى */
+.project-content {
+    padding: 25px;
+    text-align: left;
+    flex: 1; /* عشان ياخد باقي الطول */
+    display: flex;
+    flex-direction: column;
+}
+
+/* شكل الكود لاين */
+.command-line {
+    font-family: 'Courier New', monospace;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 6px;
+    color: #00E5FF; /* لون سيان للكود */
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    border-left: 3px solid #00E5FF;
+}
+
+.prompt {
+    color: #ff0055; /* علامة الدولار حمراء */
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* النصوص */
+.project-content h3 {
+    color: #fff;
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+}
+
+.project-content p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1; /* يخلي النصوص تاخد مساحتها وتزق اللينكات تحت */
+}
+
+/* 5. التاغات (اللغات المستخدمة) */
+.tech-stack {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.tech-stack span {
+    background: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 6. اللينكات (Github) */
+.project-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.project-links a:hover {
+    color: #00E5FF;
+}
+
+/* للموبايل */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr; /* عمود واحد في الموبايل */
+    }
+}
+
+/* 1. تنسيق الفوتر */
+.contact-section {
+    width: 100%;
+    /* خلفية متدرجة تدي عمق في النهاية */
+    background: linear-gradient(to top, #000000, #0f172a);
+    padding: 80px 20px 20px 20px; /* مسافة كبيرة من فوق */
+    text-align: center;
+    margin-top: 100px;
+    border-top: 1px solid rgba(0, 229, 255, 0.1);
+    position: relative;
+}
+
+/* 2. النصوص */
+.contact-content p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+}
+
+/* 3. زرار الإيميل الكبير */
+.email-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #000;
+    background: #00E5FF; /* زرار منور */
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+}
+
+.email-btn:hover {
+    background: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.8);
+}
+
+/* 4. أيقونات السوشيال في الفوتر */
+.footer-socials {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footer-socials a {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: 0.3s;
+    opacity: 0.7;
+}
+
+.footer-socials a:hover {
+    color: #00E5FF;
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* 5. حقوق الملكية (تحت خالص) */
+.footer-bottom {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+/* 1. تنسيق الحاوية */
+.skills-section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 100px auto; /* مسافة بينه وبين المشاريع */
+    text-align: center;
+    padding: 20px;
+}
+
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px; /* مسافة بين كل فئة والتانية */
+    margin-top: 50px;
+}
+
+/* 2. تنسيق الفئة (العنوان) */
+.skill-category h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: left; /* العنوان يجي شمال */
+    padding-left: 10px;
+    border-left: 4px solid #00E5FF; /* خط سماوي جنب العنوان */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skill-category h3 i {
+    color: #00E5FF; /* لون الأيقونة */
+}
+
+/* 3. شبكة المهارات */
+.skill-grid {
+    display: flex;
+    flex-wrap: wrap; /* عشان ينزلوا سطر جديد لو المساحة خلصت */
+    gap: 15px;
+}
+
+/* 4. الشريحة الإلكترونية (Skill Chip) */
+.skill-chip {
+    background: rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+    padding: 10px 20px;
+    border-radius: 50px; /* شكل بيضاوي */
+    font-size: 1rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+/* تأثير النيون عند اللمس */
+.skill-chip:hover {
+    color: #000;
+    background: #00E5FF;
+    border-color: #00E5FF;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+    transform: translateY(-3px); /* ينط لفوق */
+}
+
+/* تخصيص ألوان لكل قسم (اختياري للشياكة) */
+/* قسم الهجوم (Red Team) نخليه يقلب أحمر لما تقف عليه */
+.skill-category:nth-child(2) .skill-chip:hover {
+    background: #ff0055;
+    border-color: #ff0055;
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
+}
+
+/* للموبايل */
+@media (max-width: 768px) {
+    .skill-grid {
+        justify-content: center; /* في الموبايل سنتر الشيبات */
+    }
+    .skill-category h3 {
+        justify-content: center; /* سنتر العناوين */
+        border-left: none;
+        border-bottom: 3px solid #00E5FF;
+        padding-bottom: 5px;
+    }
+}
+/* 1. تنسيق القسم */
+.tech-stack-section {
+    width: 100%;
+    max-width: 1100px;
+    margin: 100px auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.section-subtitle {
+    color: #94a3b8;
+    margin-bottom: 50px;
+}
+
+.tech-container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* 2. عناوين الفئات */
+.tech-category h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.tech-category h3 i {
+    color: #00E5FF;
+}
+
+/* 3. شبكة الأيقونات */
+.tech-grid {
+    display: grid;
+    /* يرصهم أوتوماتيك حسب المساحة، كل واحد مبيقلش عن 120 بيكسل */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+/* 4. كارت الأداة الواحد */
+.tech-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px 10px;
+    width: 100%; /* ياخد مساحته في الشبكة */
+    max-width: 150px; /* ميكبرش أوي */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+/* 5. تنسيق الأيقونة (الصورة) */
+/* الأيقونة في الوضع العادي (مطفية ورمادي عشان تحافظ على هدوء الموقع) */
+.tech-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.7); /* أبيض وأسود وشفاف شوية */
+    transition: all 0.4s ease; /* نعومة في التحول */
+}
+
+/* لما تقف على الكارت */
+.tech-item:hover {
+    border-color: #00E5FF;
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* الأيقونة ترجع لألوانها الأصلية وتنور */
+.tech-item:hover .tech-icon {
+    filter: grayscale(0%) opacity(1); /* الألوان ترجع طبيعية */
+    transform: scale(1.1); /* تكبر سنة بسيطة */
+    /* توهج خفيف حوالين اللوجو بلونه الأصلي */
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); 
+}
+/* لو الصورة أصلاً ملونة (زي Wireshark) بنزود عليها تأثير عشان تبهت */
+.colored-icon {
+     filter: grayscale(100%) brightness(0.8) opacity(0.7);
+}
+
+/* 6. اسم الأداة */
+.tech-item span {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/* --- تأثيرات الهوفر (لما تقف بالماوس) --- */
+.tech-item:hover {
+    border-color: #00E5FF; /* البرواز ينور */
+    transform: translateY(-5px); /* ينط لفوق */
+    box-shadow: 0 5px 20px rgba(0, 229, 255, 0.2); /* ضل نيون خفيف */
+    background: rgba(0, 229, 255, 0.05);
+}
+
+/* الأيقونة تنور وتتلون */
+.tech-item:hover .tech-icon {
+    filter: grayscale(0%) opacity(1); /* ترجع لألوانها الطبيعية */
+    /* إضافة توهج سماوي حول الأيقونة */
+    filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.8)); 
+}
+
+/* لو الأيقونة ملونة أصلاً، نرجعها لألوانها */
+.tech-item:hover .colored-icon {
+      filter: grayscale(0%) brightness(1) opacity(1);
+}
+
+/* الاسم ينور أبيض */
+.tech-item:hover span {
+    color: #ffffff;
+}
+
+/* للموبايل */
+@media (max-width: 768px) {
+    .tech-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* تصغير الكروت شوية */
+    }
+    .tech-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* --- تصميم شريط التمرير (Scrollbar) --- */
+
+/* 1. دعم فايرفوكس (Firefox Support) */
+html {
+    scrollbar-width: thin; /* يخلي الشريط رفيع */
+    scrollbar-color: #00E5FF #0f172a; /* (لون المقبض) (لون الخلفية) */
+}
+
+/* 2. دعم كروم وإيدج (Chrome & Edge Support) */
+::-webkit-scrollbar {
+    width: 12px; /* عرض الشريط */
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a; /* لون المجرى (الخلفية) */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #00E5FF; /* لون المقبض (سماوي) */
+    border-radius: 20px; /* تدوير الحواف */
+    border: 3px solid #0f172a; /* مسافة فراغ حول المقبض عشان يبان شيك */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #00b8cc; /* يغمق سنة لما تمسكه */
+}
+
+
+/* تنسيق العلم (المعدل للمحاذاة المثالية) */
+.flag-icon {
+    height: 18px; /* ارتفاع مناسب جداً مع حجم الخط */
+    width: auto;  /* العرض يتظبط أوتوماتيك */
+    margin-left: 8px;
+    
+    /* عشان نضمن إنه يفضل في نص السطر ومينزلش لتحت */
+    vertical-align: middle;
+    display: inline-block;
+    
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    
+    /* أنيميشن هادي */
+    animation: pulse 3s infinite ease-in-out;
+}
+
+/* تنسيق الجملة اللي شايلة العلم */
+.support-badge {
+    display: inline-flex; /* السحر هنا: بيخلي الكلام والصورة على سطر واحد غصب عنهم */
+    align-items: center; /* بيوسطنهم رأسياً */
+    vertical-align: middle;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
